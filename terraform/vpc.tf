@@ -90,4 +90,14 @@ resource "oci_core_security_list" "internet_permissive_sl" {
     }
   }
 
+  ingress_security_rules {
+    protocol = "17"
+    source   = oci_core_virtual_network.vcn.cidr_block
+
+    tcp_options {
+      max = "0"
+      min = "0"
+    }
+  }
+
 }

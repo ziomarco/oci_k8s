@@ -23,3 +23,12 @@ docker run -d --restart=unless-stopped \
   --acme-domain <REPLACE-HERE-YOUR-DOMAIN>
 ```
 - Create new RKE cluster manually :)
+- Open the Rancher Console
+- Create a new RKE2 cluster with default settings
+- Copy the join command from "registration" tab into the machines and wait
+
+If after some minutes with `kubectl get all -A` you see that all pods are running but `cattle-agent`, and on Rancher it's waiting for registration, that's probably because of dns.
+
+In order to fix that launch `kubectl -n cattle-system edit deployment cattle-cluster-agent`
+
+Search for dnsPolicy and change it to `Default`
