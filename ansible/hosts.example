@@ -1,0 +1,9 @@
+[oci-cloud]
+0.0.0.0 # oci-k8s-instance-00
+0.0.0.0 # oci-k8s-instance-01
+0.0.0.0 # oci-k8s-instance-02
+0.0.0.0 # oci-k8s-instance-03
+
+[oci-cloud:vars]
+ansible_connection=ssh
+ansible_user=ubuntu
