@@ -40,9 +40,15 @@ resource "oci_core_security_list" "internet_permissive_sl" {
   display_name   = "${var.project_name}-permissive-sl"
 
   egress_security_rules {
-    protocol    = "6"
+    protocol    = "6" # TCP traffic
     destination = "0.0.0.0/0"
   }
+
+  egress_security_rules {
+    protocol    = "17" # UDP traffic
+    destination = "0.0.0.0/0"
+  }
+
 
   ingress_security_rules {
     protocol = "6"
