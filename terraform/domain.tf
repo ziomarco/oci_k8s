@@ -17,3 +17,12 @@ resource "aws_route53_record" "master" {
   zone_id = data.aws_route53_zone.dns_zone.id
   ttl     = 60
 }
+
+resource "aws_route53_record" "nodes" {
+  count = 3
+  name    = "instance-0${count.index}.${replace(var.lb_domain_hostname, "*.", "")}"
+  type    = "A"
+  records = [oci_core_instance.instance[count.index+1].public_ip]
+  zone_id = data.aws_route53_zone.dns_zone.id
+  ttl     = 60
+}

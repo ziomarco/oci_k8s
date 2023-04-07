@@ -1,0 +1,13 @@
+node_ami_ocid    = "ocid1.image.oc1.eu-milan-1.aaaaaaaa7qblzorh2gmzqzsrxocd35vh246zlqqzyjctvmogl5jubqrblgya" # This refers to Ubuntu 22.04 ARM image provided from OCI for eu-milan-1 region
+compartment_ocid = "<YOUR-COMPARTMENT-OCID>"
+region           = "eu-milan-1"
+tenancy_ocid     = "<YOUR-TENANCY-OCID-it-can-also-be-the-same-of-compartment>"
+user_ocid        = "<YOUR-USER-OCID>"
+key_fingerprint  = "<YOUR-KEY-FINGERPRINT>"
+private_key_path = "<YOUR-OCI-PRIV-KEY-PATH>"
+
+ssh_public_key     = "<YOUR-SSH-KEYS-used-for-ssh-access-to-instances>"
+project_name       = "oci-k8s"
+lb_domain_hostname = "*.kubernetes.example.domain.tld"
+route53_zone_name  = "domain.tld"
+aws_profile        = "<MY-AWS-PROFILE>"

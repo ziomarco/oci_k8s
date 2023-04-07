@@ -1,6 +1,4 @@
-variable "private_key_path" {
-  default = "~/.oci/ziomarco.pem"
-}
+variable "private_key_path" {}
 
 variable "instance_shape" {
   default = "VM.Standard.A1.Flex"
