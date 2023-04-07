@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c649f52-f6ff-4b45-b1c1-e143ee0d05f6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/terraform/lb.tf" beforeDir="false" afterPath="$PROJECT_DIR$/terraform/lb.tf" afterDir="false" />
-    </list>
+    <list default="true" id="0c649f52-f6ff-4b45-b1c1-e143ee0d05f6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +58,7 @@
       <option name="presentableId" value="Default" />
       <updated>1680817050751</updated>
       <workItem from="1680817051832" duration="24986000" />
-      <workItem from="1680887257677" duration="5188000" />
+      <workItem from="1680887257677" duration="6006000" />
     </task>
     <servers />
   </component>

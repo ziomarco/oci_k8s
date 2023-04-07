@@ -32,3 +32,8 @@ If after some minutes with `kubectl get all -A` you see that all pods are runnin
 In order to fix that launch `kubectl -n cattle-system edit deployment cattle-cluster-agent`
 
 Search for dnsPolicy and change it to `Default`
+
+# Cert Manager
+In order to use HTTPS on ingresses, install cert-manager chart from Rancher Apps without editing default values.
+Then download your kubeconfig file and run a `kubectl apply -f k8s/ClusterIssuer.yaml` (edit with your email before, please) in order to create a cluster issuer.
+When it finishes without errors, [use it](https://cert-manager.io/docs/usage/ingress/)
