@@ -1,0 +1,59 @@
+---
+- name: "Prepare machines for becoming RKE nodes"
+  hosts: oci-cloud
+  remote_user: ubuntu
+  become: yes
+
+  tasks:
+    - name: "Download Docker installer"
+      ansible.builtin.get_url:
+        url: https://get.docker.com
+        dest: /tmp/install-docker.sh
+        mode: '0755'
+    - name: "Install Docker"
+      ansible.builtin.shell: sudo sh /tmp/install-docker.sh
+    - name: "Clean iptables from OCI bloatware"
+      ansible.builtin.shell: sudo iptables -F InstanceServices
+    - name: "Restore incoming connections correctly deleting iptables routes"
+      ansible.builtin.shell: sudo iptables -D INPUT -j REJECT --reject-with icmp-host-prohibited || true
+    - name: "[UFW] Allow everything and enable UFW"
+      community.general.ufw:
+        state: enabled
+        policy: allow
+    - name: "[UFW] Set logging"
+      community.general.ufw:
+        logging: 'on'
+    - name: "[UFW] Set reject mode"
+      community.general.ufw:
+        rule: reject
+        port: auth
+        log: true
+    - name: "[UFW] Setting up SSH rate limiting"
+      community.general.ufw:
+        rule: limit
+        port: ssh
+        proto: tcp
+    - name: "[UFW] Allowing SSH"
+      community.general.ufw:
+        rule: allow
+        name: OpenSSH
+    - name: "[UFW] Allowing external HTTP traffic"
+      community.general.ufw:
+          rule: allow
+          proto: tcp
+          port: '80'
+    - name: "[UFW] Allowing external HTTPS traffic"
+      community.general.ufw:
+        rule: allow
+        proto: tcp
+        port: '443'
+    - name: "[UFW] Allowing internal TCP traffic"
+      community.general.ufw:
+        rule: allow
+        proto: tcp
+        src: 10.1.0.0/16 # Change this with your VPC CIDR
+    - name: "[UFW] Allowing internal UDP traffic"
+      community.general.ufw:
+        rule: allow
+        proto: udp
+        src: 10.1.0.0/16 # Change this with your VPC CIDR
